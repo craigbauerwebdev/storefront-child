@@ -1,0 +1,103 @@
+/*
+ Theme Name:   Store Front Child Theme
+ description: A child theme of the Twenty Fifteen default WordPress theme
+ Author:       Craig Bauer
+ Template:     storefront
+ Version:      1.0.0
+*/
+
+@import url("../storefront/style.css");
+
+* {
+	font-family: 'Lato', sans-serif;
+}
+body.woocommerce #primary,
+body.woocommerce-checkout #primary {
+	width: 100%;
+}
+.site-header {
+	background-color: #fff;
+	padding: 0;
+}
+
+.woocommerce-info, .woocommerce-noreviews, p.no-comments, .woocommerce-message, .woocommerce-info, .woocommerce-error, .woocommerce-noreviews, p.no-comments {
+    background-color: #f50022;
+}
+
+.top-bar {
+	color: #fff;
+	background-color: #f50022;
+	font-size: 1.2em;
+}
+.col-full-header {
+	background: green;
+}
+.site-footer {
+	background-color: #ddd;
+    /*color: #fff;*/
+    /*padding: 1.618em 0 3.706325903em;*/
+}
+.site-info {
+	/*display: none;*/
+}
+.single-product div.product .woocommerce-product-gallery .woocommerce-product-gallery__trigger {
+	display: none;
+}
+.site-header .custom-logo-link img {
+    max-width: 327px;
+}
+@media (min-width: 768px) {
+	.storefront-primary-navigation {
+		border-top: solid 1px #eee;
+	}
+	.storefront-full-width-content .woocommerce-products-header {
+		padding: 15px 0 30px 0;
+	}
+	.storefront-sorting {
+		display: none;
+	}
+	.woocommerce-active .site-header .site-search {
+		width: 20%;
+		margin: 30px 30px 0 0;
+		clear: none;
+	}
+	.col-full {
+	    /*max-width: 66.4989378333em;*/
+	    margin-left: auto;
+	    margin-right: auto;
+	    width: 100%;
+	    max-width: 1200px;
+	    padding: 0 2.617924em;
+	    box-sizing: content-box;
+	}
+	.woocommerce-active .site-header .site-branding {
+	    width: 70%;
+	    float: left;
+	    margin-right: 3%;
+	    margin-bottom: 0;
+	}
+	.site-header {
+		padding-top: 0;
+		position: sticky;
+		position: -webkit-sticky;
+		top: 0;
+		left: 0;
+		z-index: 999;
+		border-bottom: 1px #eee solid;
+		margin-bottom: 15px;
+	}
+	.site-header .site-branding img {
+	    height: auto;
+	    max-width: 327px;
+	    max-height: none;
+	    margin: 8px 0 8px 15px;
+	}
+	.storefront-breadcrumb {
+		display: none;
+	    padding: 1.41575em 0;
+	    margin: 0 0 3.706325903em;
+	}
+	.home.blog .site-header, .home.page:not(.page-template-template-homepage) .site-header, .home.post-type-archive-product .site-header {
+	    margin-bottom: 0;
+	}
+}
