@@ -72,7 +72,9 @@ if ( ! function_exists( 'storefront_primary_navigation' ) ) {
 	function storefront_primary_navigation() {
 		?>
 		<nav id="site-navigation" class="main-navigation" role="navigation" aria-label="<?php esc_html_e( 'Primary Navigation', 'storefront' ); ?>">
-		<button class="menu-toggle" aria-controls="site-navigation" aria-expanded="false"></button>
+		<!-- <button class="menu-toggle" aria-controls="site-navigation" aria-expanded="false"></button> -->
+		<button class="menu-toggle-custom" aria-controls="site-navigation" aria-expanded="false"><span>☰</span></button>
+
 			<?php
 			wp_nav_menu(
 				array(
