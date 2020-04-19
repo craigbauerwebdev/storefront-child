@@ -19,26 +19,16 @@ body.woocommerce-checkout #primary {
 	background-color: #fff;
 	padding: 0;
 }
-
 .woocommerce-info, .woocommerce-noreviews, p.no-comments, .woocommerce-message, .woocommerce-info, .woocommerce-error, .woocommerce-noreviews, p.no-comments {
     background-color: #f50022;
 }
-
 .top-bar {
 	color: #fff;
 	background-color: #f50022;
 	font-size: 1.2em;
 }
-.col-full-header {
-	background: green;
-}
 .site-footer {
 	background-color: #eee;
-    /*color: #fff;*/
-    /*padding: 1.618em 0 3.706325903em;*/
-}
-.site-info {
-	/*display: none;*/
 }
 .single-product div.product .woocommerce-product-gallery .woocommerce-product-gallery__trigger {
 	display: none;
@@ -114,7 +104,6 @@ ul.products .wc-block-grid__product,
 		clear: none;
 	}
 	.col-full {
-	    /*max-width: 66.4989378333em;*/
 	    margin-left: auto;
 	    margin-right: auto;
 	    width: 100%;
