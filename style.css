@@ -84,6 +84,26 @@ ul.products .wc-block-grid__product,
 .wc-block-grid__products .wc-block-grid__product {
 	margin-bottom: 2em;
 }
+.site-footer a:not(.button):not(.components-button) {
+    color: #2c2d33;
+    text-decoration: none;
+}
+.footer-widgets {
+	padding: 0;
+	border-bottom: none;
+}
+.widget_nav_menu ul li {
+	display: inline-block;
+	padding-left: 0;
+}
+.widget_nav_menu ul li a {
+	text-decoration: none;
+}
+.widget_nav_menu ul li::before {
+	display: none;
+}
+
+}
 
 @media(max-width: 600px) {
 	.address {

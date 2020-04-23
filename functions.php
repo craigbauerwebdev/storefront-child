@@ -59,8 +59,9 @@ if ( ! function_exists( 'storefront_footer_widgets' ) ) {
 				<img src="http://miaskitchensuffern.com/wp-content/themes/mias_theme/images/social/facebook.png">
 			</a>
 		</div>';
-		/* $rows    = intval( apply_filters( 'storefront_footer_widget_rows', 1 ) );
-		$regions = intval( apply_filters( 'storefront_footer_widget_columns', 4 ) );
+		
+		$rows    = intval( apply_filters( 'storefront_footer_widget_rows', 1 ) );
+		$regions = intval( apply_filters( 'storefront_footer_widget_columns', 1 ) );
 
 		for ( $row = 1; $row <= $rows; $row++ ) :
 
@@ -92,7 +93,7 @@ if ( ! function_exists( 'storefront_footer_widgets' ) ) {
 				<?php
 				unset( $columns );
 			endif;
-		endfor;*/
+		endfor;
 	} 
 }
 
@@ -165,7 +166,7 @@ function woo_new_product_tab( $tabs ) {
 	
 	// Adds the new tab
 	
-	$tabs['test_tab'] = array(
+	$tabs['ingredients'] = array(
 		'title' 	=> __( 'Ingredients', 'woocommerce' ),
 		'priority' 	=> 50,
 		'callback' 	=> 'woo_new_product_tab_content'
@@ -178,7 +179,21 @@ function woo_new_product_tab_content() {
 
 	// The new tab content
 
-	echo '<h2>New Product Tab</h2>';
+	echo '<h2>Ingredients</h2>';
 	echo '<p>Here\'s your new product tab.</p>';
 	
+}
+//remove_filter( 'woocommerce_product_tabs', 'woo_new_product_tab' );
+
+/**
+ * Remove product data tabs
+ */
+add_filter( 'woocommerce_product_tabs', 'woo_remove_product_tabs', 98 );
+
+function woo_remove_product_tabs( $tabs ) {
+
+    unset( $tabs['description'] );
+    unset( $tabs['ingredients'] );
+
+    return $tabs;
 }
