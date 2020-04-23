@@ -13,12 +13,21 @@ if ( ! function_exists( 'storefront_header_container' ) ) {
 	function storefront_header_container() {
 		echo '
 			<div class="top-bar">
-				<div class="top-ber-inner" style="padding: 5px 15px; letter-spacing: 2px; color: #fff;">
+				<div class="top-ber-inner" style="padding: 1px 15px; letter-spacing: 2px; color: #fff; font-size: 1.05em;">
 					<span class="phone-number">(845)547-2427</span>
 					<span class="address" style="float: right;">83 Lafayette Ave, Suffern, NY</span>
 				</div>
 			</div>
-			<div class="col-full-header" style="position: sticky; position: -webkit-sticky; top: 0; left: 0; z-index: 99;">';
+			<div class="col-full-header clearfix" style="position: relative;">';
+	}
+}
+
+if ( ! function_exists( 'storefront_header_container_close' ) ) {
+	/**
+	 * The header container close
+	 */
+	function storefront_header_container_close() {
+		echo '</div>';
 	}
 }
 
@@ -32,6 +41,59 @@ if ( ! function_exists( 'storefront_product_search' ) ) {
 			<?php
 		}
 	}
+}
+
+if ( ! function_exists( 'storefront_footer_widgets' ) ) {
+	/**
+	 * Display the footer widget regions.
+	 *
+	 * @since  1.0.0
+	 * @return void
+	 */
+	function storefront_footer_widgets() {
+		echo '<div id="socials">
+			<a href="https://www.instagram.com/mias_kitchen_suffern/" target="_blank">
+				<img src="http://miaskitchensuffern.com/wp-content/themes/mias_theme/images/social/instagram.png">
+			</a>
+			<a href="https://www.facebook.com/miaskitchensuffern/" target="_blank">
+				<img src="http://miaskitchensuffern.com/wp-content/themes/mias_theme/images/social/facebook.png">
+			</a>
+		</div>';
+		/* $rows    = intval( apply_filters( 'storefront_footer_widget_rows', 1 ) );
+		$regions = intval( apply_filters( 'storefront_footer_widget_columns', 4 ) );
+
+		for ( $row = 1; $row <= $rows; $row++ ) :
+
+			// Defines the number of active columns in this footer row.
+			for ( $region = $regions; 0 < $region; $region-- ) {
+				if ( is_active_sidebar( 'footer-' . esc_attr( $region + $regions * ( $row - 1 ) ) ) ) {
+					$columns = $region;
+					break;
+				}
+			}
+
+			if ( isset( $columns ) ) :
+				?>
+				<div class=<?php echo '"footer-widgets row-' . esc_attr( $row ) . ' col-' . esc_attr( $columns ) . ' fix"'; ?>>
+				<?php
+				for ( $column = 1; $column <= $columns; $column++ ) :
+					$footer_n = $column + $regions * ( $row - 1 );
+
+					if ( is_active_sidebar( 'footer-' . esc_attr( $footer_n ) ) ) :
+						?>
+					<div class="block footer-widget-<?php echo esc_attr( $column ); ?>">
+						<?php dynamic_sidebar( 'footer-' . esc_attr( $footer_n ) ); ?>
+					</div>
+						<?php
+					endif;
+				endfor;
+				?>
+			</div><!-- .footer-widgets.row-<?php echo esc_attr( $row ); ?> -->
+				<?php
+				unset( $columns );
+			endif;
+		endfor;*/
+	} 
 }
 
 if ( ! function_exists( 'storefront_credit' ) ) {
@@ -93,4 +155,30 @@ if ( ! function_exists( 'storefront_primary_navigation' ) ) {
 		</nav><!-- #site-navigation -->
 		<?php
 	}
+}
+
+/**
+ * Add a custom product data tab
+ */
+add_filter( 'woocommerce_product_tabs', 'woo_new_product_tab' );
+function woo_new_product_tab( $tabs ) {
+	
+	// Adds the new tab
+	
+	$tabs['test_tab'] = array(
+		'title' 	=> __( 'Ingredients', 'woocommerce' ),
+		'priority' 	=> 50,
+		'callback' 	=> 'woo_new_product_tab_content'
+	);
+
+	return $tabs;
+
+}
+function woo_new_product_tab_content() {
+
+	// The new tab content
+
+	echo '<h2>New Product Tab</h2>';
+	echo '<p>Here\'s your new product tab.</p>';
+	
 }
