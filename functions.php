@@ -139,19 +139,16 @@ if ( ! function_exists( 'storefront_credit' ) ) {
 
 		echo '<div class="mobile-menu-wrap">';
 			echo '<div class="mobile-menu-inner">';
-				//if ( ! is_admin() ) {
 					wp_nav_menu(
 						array(
 							'theme_location'  => 'mobile',
 							'container_class' => 'mobile-navigation',
 						)
 					); 
-				//} 
 				echo '<div class="close-menu">×</div>';
 			echo '</div>';
 		echo '</div>';
 	}
-	
 }
 
 if ( ! function_exists( 'storefront_primary_navigation' ) ) {
@@ -164,25 +161,17 @@ if ( ! function_exists( 'storefront_primary_navigation' ) ) {
 	function storefront_primary_navigation() {
 		?>
 		<nav id="site-navigation" class="main-navigation" role="navigation" aria-label="<?php esc_html_e( 'Primary Navigation', 'storefront' ); ?>">
-		<!-- <button class="menu-toggle" aria-controls="site-navigation" aria-expanded="false"></button> -->
 		<button class="menu-toggle-custom"><span>☰</span></button>
 
 			<?php
-			wp_nav_menu(
-				array(
-					'theme_location'  => 'primary',
-					'container_class' => 'primary-navigation',
-				)
-			);
-
-			/* wp_nav_menu(
-				array(
-					'theme_location'  => 'handheld',
-					'container_class' => 'handheld-navigation',
-				)
-			); */
+				wp_nav_menu(
+					array(
+						'theme_location'  => 'primary',
+						'container_class' => 'primary-navigation',
+					)
+				);
 			?>
-		</nav><!-- #site-navigation -->
+		</nav>
 		<?php
 	}
 }
