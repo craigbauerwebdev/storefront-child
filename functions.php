@@ -1,7 +1,15 @@
 <?php
 
-add_action( 'get_header', 'remove_storefront_sidebar' );
+register_nav_menus(
+	apply_filters(
+		'storefront_register_nav_menus', array(
+			'top'  => __( 'Top Menu', 'storefront' ),
+			'mobile' => __( 'Mobile Menu', 'storefront' )
+		)
+	)
+);
 
+add_action( 'get_header', 'remove_storefront_sidebar' );
 function remove_storefront_sidebar() {
 	if ( is_woocommerce() || is_checkout() ) {
 		remove_action( 'storefront_sidebar', 'storefront_get_sidebar', 10 );
@@ -48,15 +56,6 @@ if ( ! function_exists( 'storefront_product_search' ) ) {
 		}
 	}
 }
-
-register_nav_menus(
-	apply_filters(
-		'storefront_register_nav_menus', array(
-			'top'  => __( 'Top Menu', 'storefront' ),
-			'mobile' => __( 'Mobile Menu', 'storefront' )
-		)
-	)
-);
 
 if ( ! function_exists( 'storefront_footer_widgets' ) ) {
 	/**
@@ -137,19 +136,23 @@ if ( ! function_exists( 'storefront_credit' ) ) {
 			<?php echo esc_html( apply_filters( 'storefront_copyright_text', $content = '&copy; ' . get_bloginfo( 'name' ) . ' ' . date( 'Y' ) ) ); ?>	
 		</div><!-- .site-info -->
 		<?php
-	} ?>
-	<div class="mobile-menu-wrap">
-		<div class="mobile-menu-inner">
-			<?php wp_nav_menu(
-				array(
-					'theme_location'  => 'mobile',
-					'container_class' => 'mobile-navigation',
-				)
-			); ?>
-			<div class="close-menu">×</div>
-		</div>
-	</div>
-<?php }
+
+		echo '<div class="mobile-menu-wrap">';
+			echo '<div class="mobile-menu-inner">';
+				//if ( ! is_admin() ) {
+					wp_nav_menu(
+						array(
+							'theme_location'  => 'mobile',
+							'container_class' => 'mobile-navigation',
+						)
+					); 
+				//} 
+				echo '<div class="close-menu">×</div>';
+			echo '</div>';
+		echo '</div>';
+	}
+	
+}
 
 if ( ! function_exists( 'storefront_primary_navigation' ) ) {
 	/**
@@ -225,7 +228,11 @@ function woo_remove_product_tabs( $tabs ) {
 }
 
 /* New Script */
-if ( ! is_admin() ) {
-	global $storefront_version;
-	wp_enqueue_script( 'storefront-mobile-navigation', get_stylesheet_directory_uri() . '/assets/js/custom-child.js', array(), $storefront_version, true );
-}	
+function customJS(){
+	if ( ! is_admin() ) {
+		global $storefront_version;
+		wp_enqueue_script( 'storefront-mobile-navigation', get_stylesheet_directory_uri() . '/assets/js/custom-child.js', array(), $storefront_version, true );
+	}
+}
+
+add_action( 'wp_enqueue_scripts', 'customJS' );
