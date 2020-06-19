@@ -175,6 +175,11 @@ if ( ! function_exists( 'storefront_primary_navigation' ) ) {
 		<?php
 	}
 }
+/* Remove Product main editor  */
+function remove_product_editor() {
+  remove_post_type_support( 'product', 'editor' );
+}
+add_action( 'init', 'remove_product_editor' );
 
 /**
  * Add a custom product data tab
