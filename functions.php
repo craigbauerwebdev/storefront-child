@@ -259,3 +259,16 @@ function wc_minimum_order_amount() {
         }
     }
 }
+
+/* Describe what the code snippet does so you can remember later on */
+add_action('wp_head', 'add_analytics');
+function add_analytics(){ ?>
+	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-173623056-2"></script>
+	<script>
+			window.dataLayer = window.dataLayer || [];
+			function gtag(){dataLayer.push(arguments);}
+			gtag('js', new Date());
+
+			gtag('config', 'UA-173623056-2');
+	</script>
+<?php }; 
