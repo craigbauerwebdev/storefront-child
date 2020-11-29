@@ -705,3 +705,18 @@ if ( ! function_exists( 'storefront_header_container_close' ) ) {
 		echo '</div>';
 	}
 }
+
+
+add_action( 'init', 'woa_add_hero_image_init' );
+function woa_add_hero_image_init () {
+   add_action( 'storefront_before_content', 'woa_add_hero_image', 5 );
+}
+function woa_add_hero_image() {
+   if ( is_front_page() ) :
+      ?>
+         <div id="hero-image">
+             <img src="https://propellerads.com/blog/wp-content/uploads/2019/05/855x300_blue_3-790x300.jpg" width="100%">
+         </div>
+      <?php
+   endif;
+}

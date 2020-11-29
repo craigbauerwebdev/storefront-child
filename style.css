@@ -161,6 +161,16 @@ img.attachment-woocommerce_thumbnail.size-woocommerce_thumbnail, img.woocommerce
 	color: #fff;
 }
 
+.meal-plan-title {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	color: #fff;
+	font-size: 60px;
+	text-shadow: 2px 2px 5px #000;
+}
+
 /* Responsive Styles */
 @media(max-width: 1145px) {
 	.storefront-handheld-footer-bar ul.columns-3 li.search {
@@ -193,6 +203,9 @@ img.attachment-woocommerce_thumbnail.size-woocommerce_thumbnail, img.woocommerce
 	}
 	.top-bar .address {
 		display: none;
+	}
+	.meal-plan-title {
+		font-size: 24px;
 	}
 }
 @media(max-width: 767px) {
